@@ -1,0 +1,9 @@
+namespace Day8.Models
+{
+    public class Smer
+    {
+        public int SmerID { get; set; }
+        public string Naziv {  get; set; }
+        public virtual ICollection<Student> Student { get; set; }
+    }
+}

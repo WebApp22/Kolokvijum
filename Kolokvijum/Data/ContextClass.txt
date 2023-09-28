@@ -1,0 +1,25 @@
+ public class ContextClass : DbContext
+    {
+        public ContextClass(DbContextOptions options) : base(options) 
+        { 
+        
+        }
+
+        public DbSet<Smer> Smer { get; set; }
+        public DbSet<Student> Student { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Smer>().HasData(
+               new Smer { SmerID = 1, Naziv = "Informatika"},
+               new Smer { SmerID = 2, Naziv = "Menadžment" },
+               new Smer { SmerID = 3, Naziv = "Javna uprava" }
+               );
+
+            modelBuilder.Entity<Student>().HasData(
+                new Student { StudentID = 1, Ime = "Nemanja", Prezime = "Stevanovic", JMBG = "123532454351", SmerID = 1},
+                new Student { StudentID = 2, Ime = "Lazar", Prezime = "Stevanovic", JMBG = "123532454351", SmerID = 2 },
+                new Student { StudentID = 3, Ime = "Nebojša", Prezime = "Stevanovic", JMBG = "123532454351", SmerID = 3 }
+                );
+        }
+    }

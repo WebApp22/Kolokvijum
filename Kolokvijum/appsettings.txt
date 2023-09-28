@@ -1,0 +1,3 @@
+  "ConnectionStrings": {
+    "ContextClass": "Server=(localdb)\\mssqllocaldb;Database=Day6.Data;Trusted_Connection=True;MultipleActiveResultSets=true"
+  }

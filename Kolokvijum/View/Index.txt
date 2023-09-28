@@ -1,0 +1,58 @@
+@model IEnumerable<Day8.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<form method="get">
+    <input type="search" name="filter"/>
+    <button type="submit">Traži</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prezime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JMBG)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Smer)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prezime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JMBG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Smer.Naziv)
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.StudentID" onclick="obrisiStudenta()">Obriši</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<script>
+    function obrisiStudenta(){
+        return confirm('Da li ste sigurni?');
+    }
+</script>

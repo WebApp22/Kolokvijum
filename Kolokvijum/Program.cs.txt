@@ -1,0 +1,3 @@
+builder.Services.AddDbContext<ContextClass>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("ContextClass")));
+

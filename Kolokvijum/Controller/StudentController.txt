@@ -1,0 +1,22 @@
+public class StudentController : Controller
+    {
+        private readonly ContextClass _baza;
+
+        public StudentController(ContextClass baza)
+        {
+            _baza = baza;
+        }
+
+        public IActionResult Index()
+        {
+            var studenti = _baza.Student.Include(s => s.Smer).ToList();
+            return View(studenti);
+        }
+        public IActionResult Delete(int id)
+        {
+            var student = _baza.Student.Find(id);
+            _baza.Student.Remove(student);
+            _baza.SaveChanges();
+            return RedirectToAction("Index");
+        }
+    }
